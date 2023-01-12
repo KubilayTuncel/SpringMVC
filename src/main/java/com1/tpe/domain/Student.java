@@ -3,6 +3,8 @@ package com1.tpe.domain;
 import org.hibernate.type.LocalDateTimeType;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
@@ -14,12 +16,13 @@ public class Student {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(length = 50,nullable = false)
+    @NotEmpty(message = "Isim kismi bos birakilamaz")
     private String firstName;
 
-    @Column(length = 50,nullable = false)
+    @NotEmpty(message = "Soy-Isim kismi bos birakilamaz")
     private String lastName;
 
+    @NotNull(message = "Lütfen puan bilgisini giriniz")
     private Integer grade; //wrapper (Integer) olarak yaziyoruz ki icerigi default olarak 0 degil de
                            //null olarak doldursun. Sonra ekleme isleminiyapabiliriz. o yüzden int sekilde yazmadik
 
@@ -45,16 +48,16 @@ public class Student {
         this.lastName = lastName;
     }
 
+    public void setGrade(Integer grade) {
+        this.grade = grade;
+    }
+
     public Integer getGrade() {
         return grade;
     }
 
     public LocalDateTime getCreateDate() {
         return createDate;
-    }
-
-    public void setCreateDate(LocalDateTime createDate) {
-        this.createDate = createDate;
     }
 
     @Override

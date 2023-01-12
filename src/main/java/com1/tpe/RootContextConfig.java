@@ -24,7 +24,7 @@ public class RootContextConfig {
 
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan(new String[] {"com.tpe.domain"}); //Burada entity classlarimizin yerini gösteriyoruz.
+        sessionFactory.setPackagesToScan(new String[] {"com1.tpe.domain"}); //Burada entity classlarimizin yerini gösteriyoruz.
         sessionFactory.setHibernateProperties(hibernateProperties());
 
         return sessionFactory;
